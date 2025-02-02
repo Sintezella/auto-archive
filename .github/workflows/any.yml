@@ -25,8 +25,7 @@ jobs:
           python -c "
           from waybackpy import WaybackMachineSaveAPI
           urls = [
-              'https://osu.ppy.sh/users/13983108',
-              'https://example.com',
+              'https://osu.ppy.sh/users/13983108'
           ]
           user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
           for url in urls:
