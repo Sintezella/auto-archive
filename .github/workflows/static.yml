@@ -1,0 +1,13 @@
+name: Archive URL Monthly
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'  # 1st of every month at 00:00 UTC
+  workflow_dispatch:      # Allows manual triggering
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Archive the URL
+        run: curl -L "https://web.archive.org/save/https://osu.ppy.sh/users/13983108"
