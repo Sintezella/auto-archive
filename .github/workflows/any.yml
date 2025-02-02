@@ -1,9 +1,9 @@
-name: Archive URL Monthly 1
+name: Archive URLs Monthly
 
 on:
   schedule:
-    - cron: '0 0 1 * *'  # 1st of every month at 00:00 UTC
-  workflow_dispatch:      # Allows manual triggering
+    - cron: '0 0 1 * *'
+  workflow_dispatch:
 
 jobs:
   archive:
@@ -18,11 +18,18 @@ jobs:
           python-version: "3.10"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install waybackpy==3.0.6
 
       - name: Archive URLs
         run: |
           python -c "
-          from wayback import save
-          save('https://osu.ppy.sh/users/13983108')
+          from waybackpy import WaybackMachineSaveAPI
+          urls = [
+              'https://osu.ppy.sh/users/13983108',
+              'https://example.com',
+          ]
+          user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+          for url in urls:
+              saver = WaybackMachineSaveAPI(url, user_agent)
+              saver.save()
           "
