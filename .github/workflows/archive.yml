@@ -2,7 +2,7 @@ name: Archive URL Monthly
 
 on:
   schedule:
-    - cron: '0 2 1 * *'  # 1st of every month at 00:00 UTC
+    - cron: '0 2 1 1 *'  # 1st of every month at 00:00 UTC
   workflow_dispatch:      # Allows manual triggering
 
 jobs:
