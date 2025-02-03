@@ -1,4 +1,4 @@
-name: Archive URLs Monthly (working one)
+name: Archive URLs twice a week (working one)
 
 on:
   schedule:
