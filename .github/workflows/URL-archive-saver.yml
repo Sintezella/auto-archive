@@ -24,11 +24,14 @@ jobs:
         run: |
           python -c "
           from waybackpy import WaybackMachineSaveAPI
-          urls = [
-              'https://osu.ppy.sh/users/13983108'
-          ]
           user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+          with open('links.txt', 'r') as f:
+              urls = [line.strip() for line in f if line.strip()]
           for url in urls:
-              saver = WaybackMachineSaveAPI(url, user_agent)
-              saver.save()
+              try:
+                  saver = WaybackMachineSaveAPI(url, user_agent)
+                  saver.save()
+                  print(f'Archived: {url}')
+              except Exception as e:
+                  print(f'Failed to archive {url}: {e}')
           "
